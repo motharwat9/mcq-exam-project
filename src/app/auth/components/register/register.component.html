@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center align-items-center  " style="height:calc(100vh - 103px) ;">
+   <form [formGroup]="userForm" (ngSubmit)="submit()" class="  border p-4 col-lg-8 col-md-10 col-12 rounded-3 position-relative" dir="rtl">
+      <h4 style=" width: 40%; top:-20px ;height: 40px; translate: 50%;right: 50%;" class="d-flex justify-content-center align-items-center border rounded-2 position-absolute text-light bg-dark">Register</h4>
+      <div class="row pt-3">
+         <div class="mb-3 col-md-6">
+            <input formControlName="username" [class.is-invalid]="userName?.invalid && userName?.touched" [class.is-valid]="userName?.valid " type="text" name="name" id="" class="form-control" placeholder="الاسم">
+            <div style="color: red;" [hidden]="userName?.valid || userName?.untouched">
+               <small *ngIf="userName?.errors?.['required']">
+                  الاسم مطلوب
+               </small>
+               <small *ngIf="userName?.errors?.['pattern']">
+                  الاسم اكبر من 3 حروف ولا يحتوى على أرقام, <b>{{userName?.errors?.['pattern'].actualValue}}</b> لا يحقق المطلوب.
+               </small>
+            </div>
+         </div>
+         <div class="mb-3 col-md-6">
+            <input formControlName="email" [class.is-invalid]="userEmail?.invalid && userEmail?.touched" [class.is-valid]="userEmail?.valid " type="email" name="email" id="" class="form-control" placeholder="الايميل">
+            <div style="color: red;" [hidden]="userEmail?.valid || userEmail?.untouched">
+               <small *ngIf="userEmail?.errors?.['required']">
+                  الايميل مطلوب
+               </small>
+               <small *ngIf="userEmail?.errors?.['email']">
+                  الايميل خطا 
+               </small>
+            </div>
+         </div>
+         <div class="mb-3 col-md-6">
+            <input formControlName="password" [class.is-invalid]="userPass?.invalid && userPass?.touched && userForm.errors?.['nameMatchedPassword']" [class.is-valid]="userPass?.valid && !userForm.errors?.['nameMatchedPassword']" type="password" name="password" id="" class="form-control" placeholder="كلمه المرور" >
+            <div style="color: red;" *ngIf="userPass?.errors?.['required'] && userPass?.touched">
+               كلمه المرور مطلوبه
+            </div>
+            <div style="color: red;" *ngIf="userPass?.errors?.['pattern'] && userPass?.touched">
+                  كلمه المرور مطلوبه تحتوى على  12 رقم أو حرف على الاقل ولا تحتوى على مسافات
+            </div>
+            <div style="color: red;" *ngIf="userForm?.errors?.['nameMatchedPassword']">
+               password not complex , must password not smaller than name
+            </div>
+         </div>
+         <div class="mb-3 col-md-6">
+            <input formControlName="confirmPassword" [class.is-invalid]="userConfirmPass?.invalid && userConfirmPass?.touched || userForm.errors?.['UnmatchedPassword']" [class.is-valid]="userConfirmPass?.valid && !userForm.errors?.['UnmatchedPassword']" type="password" name="confirmPass" id="" class="form-control" placeholder=" تأكيد كلمة المرور" >
+            <div style="color: red;" *ngIf="userConfirmPass?.errors?.['required'] && userConfirmPass?.touched">
+               تأكيد كلمة المرور مطلوبه
+            </div>
+            <div style="color: red;" *ngIf="userForm?.errors?.['UnmatchedPassword']">
+               password not equal confirm password
+            </div>
+         </div>
+      </div>
+      <div class="row align-items-center justify-content-between">
+         <div class="col-6">
+            <a class="nav-item" routerLink="/login" routerLinkActive="active">املك حساب بالفعل؟</a>
+         </div>
+         <div class="col-md-4 col-6  text-center">
+            <button type="submit" [disabled]="userForm.invalid"  class="btn text-light " style="background-color: black;">انشاء حساب</button>
+         </div>
+      </div>
+   </form>
+</div>

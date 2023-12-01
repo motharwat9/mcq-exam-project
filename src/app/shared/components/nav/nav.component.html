@@ -1,0 +1,18 @@
+<nav class=" navbar-expand-lg navbar-dark bg-dark" dir="rtl" >
+   <div class="container ">
+      <div class="row justify-content-between">
+         <div class="col-md-2 col-sm-4 col-12  text-center">
+            <a class="navbar-brand"><img src="assets/school_white_24dp.svg" style="width: 50px;" alt="">فاينـــال</a>
+         </div>
+
+            <div class="col-md-4 col-sm-6 col-12  d-flex justify-content-evenly text-light align-items-center  navbar-nav">
+                  <a class="nav-item  nav-link" *ngIf="ruleIsUser == null" routerLink="/home" routerLinkActive="active">الصفحه الرئيسية</a>
+                  <a class="nav-item  nav-link" *ngIf="ruleIsUser?.adminRule == 'doctor'" routerLink="/new-exam" routerLinkActive="active">أختبار جديد</a>
+                  <a class="nav-item  nav-link" *ngIf="ruleIsUser?.adminRule == 'doctor'" routerLink="/students" routerLinkActive="active">الطلاب</a>
+                  <a class="nav-item  nav-link" *ngIf="ruleIsUser != null" routerLink="/subjects" routerLinkActive="active">المواد</a>
+                  <a class="nav-item  nav-link" *ngIf="ruleIsUser != null" routerLink="/home"   (click)="logout()" routerLinkActive="active">خروج</a>
+                  <a class="nav-item  nav-link" *ngIf="ruleIsUser == null"  routerLink="/login" routerLinkActive="active">دخول</a>
+                  <a class="nav-item  nav-link" *ngIf="ruleIsUser == null" routerLink="/register" routerLinkActive="active">تسجيل</a>         </div>
+      </div>
+   </div>
+</nav>
