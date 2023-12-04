@@ -26,8 +26,8 @@ export class AuthService {
       retry(2),
     )
   }
-  getRule(){
-    return this.http.get(`${environment.APIURL}/login/1`).pipe(
+  getRule():Observable<Login>{
+    return this.http.get<Login>(`${environment.APIURL}/login/1`).pipe(
       retry(2),
     )
   }

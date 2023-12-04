@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DoctorModule } from './doctor/doctor.module';
+import { StudentModule } from './student/student.module';
 
 
 @NgModule({
@@ -18,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     AuthModule,
     BrowserAnimationsModule,
+    DoctorModule,
+    StudentModule
     
     
     

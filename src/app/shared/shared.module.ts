@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -21,13 +22,15 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     HttpClientModule,
     ToastrModule.forRoot(), 
+    MaterialModule
   ],
   exports: [
     NavComponent,
     RouterModule,
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule  
+    HttpClientModule ,
+    MaterialModule
   ]
 
 })

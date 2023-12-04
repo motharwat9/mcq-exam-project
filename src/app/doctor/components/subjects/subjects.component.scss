@@ -1,0 +1,25 @@
+.subjectBox {
+  padding: 50px 0;
+  .namesubject {
+    position: relative;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
+    margin-bottom: 10px;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    margin-top: 20px;
+    &:hover {
+      transform: translateY(-15px);
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.6);
+    }
+    div {
+      line-height: 3;
+      font-size: 35px;
+      font-weight: 600;
+      color: #fff;
+      background-color: #7a36f4;
+      border-radius: 10px;
+    }
+  }
+}

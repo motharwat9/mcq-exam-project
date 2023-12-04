@@ -1,1 +1,94 @@
-<p>new-exam works!</p>
+
+<mat-stepper  #stepper dir="rtl" labelPosition="bottom" linear [selectedIndex]="sterpperIndex">
+   <mat-step label="أسم المادة" [completed]="nextTab">
+      <div class="d-flex">
+         <mat-form-field>
+            <mat-label>أسم المادة</mat-label>
+            <input matInput [formControl]="fromName"   placeholder="أسم المادة">
+         </mat-form-field>
+         <div class=" d-flex m-2  align-items-center">
+            <button mat-button matStepperNext  class="btn bg-dark  text-light" (click)="stertNextTab()">أبدأ</button>
+         </div>
+      </div>
+   </mat-step>
+   <mat-step  label=" أسئلة {{subjectName}}" [completed]="previous">
+      <div class="row justify-content-center ">
+         <form [formGroup]="questionForm"  class=" col col-sm-12 col-md-8" >
+            <mat-form-field appearance="outline" color="warn" class="w-100" >
+               <mat-label>السؤال</mat-label>
+               <input matInput type="text" class="w-100" formControlName="question">
+            </mat-form-field>
+            <div class="row">
+               <div class="col-md-6 col-sm-12">
+                  <mat-radio-button value="answer1" (change)="selsecCorrectAns($event)" color="warn"></mat-radio-button>
+                  <mat-form-field color="warn" class="w-75" >
+                     <mat-label>أجابة A</mat-label>
+                     <input matInput type="text" formControlName="answer1">
+                  </mat-form-field>
+               </div>
+               <div class="col-md-6 col-sm-12">
+                  <mat-radio-button value="answer2"  (change)="selsecCorrectAns($event)"  color="warn"></mat-radio-button>
+                  <mat-form-field color="warn" class="w-75"  >
+                     <mat-label>أجابة B</mat-label>
+                     <input matInput type="text" formControlName="answer2" >
+                  </mat-form-field>
+               </div>
+               <div class="col-md-6 col-sm-12">
+                  <mat-radio-button value="answer3" (change)="selsecCorrectAns($event)"  color="warn"></mat-radio-button>
+                  <mat-form-field color="warn" class="w-75" >
+                     <mat-label>أجابة C</mat-label>
+                     <input matInput type="text"   formControlName="answer3">
+                  </mat-form-field>
+               </div>
+               <div class="col-md-6 col-sm-12">
+                  <mat-radio-button value="answer4" (change)="selsecCorrectAns($event)" color="warn"></mat-radio-button>
+                  <mat-form-field color="warn" class="w-75" >
+                     <mat-label>أجابة D</mat-label>
+                     <input matInput type="text" formControlName="answer4" >
+                  </mat-form-field>
+               </div>
+            </div>
+            <div class="row  justify-content-between">
+               <div class="col-4  d-flex justify-content-evenly">
+                  <button mat-raised-button matStepperNext   (click)="submit()" [disabled]="questions.length ? false:true">{{(previous)?'عرض':'انتهاء'}}</button>
+                  <button mat-raised-button matStepperPrevious (click)="cancel()" color="warn" >الغاء</button>
+               </div>
+               <div class="col-4  d-flex justify-content-around">
+                  <button mat-button (click)="clearForm()" color="accent">حذف </button>
+                  <button mat-raised-button color="primary"  [disabled]="questionForm.invalid" (click)="createForm()">حفظ</button>
+               </div>
+         </div>
+         </form>
+      </div>
+   </mat-step>
+   <mat-step label="عرض الاختبار" completed="false">
+      <div class="examBox">
+         <div class="text-center bg-dark text-light" ><h2>اختبار  {{subjectName}}</h2></div>
+            <div *ngFor="let item of questions ; let i = index">
+               <strong><span class="text-danger">سؤال {{i+1}} : </span>{{item.question}}</strong>
+               <div class="row" dir="rtl">
+                  <div class="col-sm-12">
+                     {{item.answer1}} -A
+                  </div>
+                  <div class="col-sm-12">
+                     {{item.answer2}} -B
+                  </div>
+                  <div class="col-sm-12">
+                     {{item.answer3}} -C
+                  </div>
+                  <div class="col-sm-12">
+                     {{item.answer4}} -D
+                  </div>
+                  <div class="col-sm-12">
+                     <span class="text-success">الاجابة الصحيحة. {{item.correctAnswer}}</span>
+                  </div>
+               </div>
+            <div c lass="text-right">
+                  <button mat-raised-button  class="btn btn-danger" (click)="delete(i)" >حذف</button>
+            </div>
+            <hr>
+         </div>
+      </div>
+   </mat-step>
+</mat-stepper>
+
