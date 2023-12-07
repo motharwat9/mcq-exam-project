@@ -1,4 +1,6 @@
 export interface Login {
+   "name":string,
    "email":string,
-   "adminRule":string
+   "adminRule":string,
+   "userId":string
 }

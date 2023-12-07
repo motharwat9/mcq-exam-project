@@ -49,13 +49,13 @@
                </div>
             </div>
             <div class="row  justify-content-between">
-               <div class="col-4  d-flex justify-content-evenly">
-                  <button mat-raised-button matStepperNext   (click)="submit()" [disabled]="questions.length ? false:true">{{(previous)?'عرض':'انتهاء'}}</button>
+               <div class="col-6 col-md-4  d-flex justify-content-evenly">
+                  <button mat-raised-button matStepperNext color="primary"  (click)="submit()" [disabled]="questions.length ? false:true">{{(previous)?'عرض':'انتهاء'}}</button>
                   <button mat-raised-button matStepperPrevious (click)="cancel()" color="warn" >الغاء</button>
                </div>
-               <div class="col-4  d-flex justify-content-around">
-                  <button mat-button (click)="clearForm()" color="accent">حذف </button>
-                  <button mat-raised-button color="primary"  [disabled]="questionForm.invalid" (click)="createForm()">حفظ</button>
+               <div class="col-6 col-md-4  d-flex justify-content-around">
+                  <button mat-raised-button (click)="clearForm()" color="warn" >حذف </button>
+                  <button mat-raised-button color="primary" [disabled]="questionForm.invalid" (click)="createForm()">حفظ السؤال</button>
                </div>
          </div>
          </form>

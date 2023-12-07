@@ -36,11 +36,9 @@ export class NewExamComponent {
   stertNextTab(){
     if(this.fromName.value == '' || this.fromName.value == null){
       this.toastr.error("يرجى ادخال أسم المادة")
-      console.log(this.questions.length)
     }else{
       this.nextTab=true
       this.subjectName=this.fromName.value
-      console.log(this.questions.length)
     }
   }
   // option change
@@ -62,11 +60,9 @@ export class NewExamComponent {
         this.questions.push(model)
         this.questionForm.reset();
         this.correctAns=''
-        console.log(this.questions.length)
         this.previous=false
       }else {
         this.toastr.error("يرجى اختيار الاجابه الصحيحه")
-        console.log(this.questions.length)
       }
     }
     clearForm(){
@@ -105,7 +101,6 @@ export class NewExamComponent {
       name:this.subjectName,
       questions:this.questions
     }
-    console.log(model)
     this.service.updatedQuestion(model,this.id).subscribe(res=>{
       this.toastr.success("تم حذف السؤال بنجاح  ")
     })

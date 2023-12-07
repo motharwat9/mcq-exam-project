@@ -10,7 +10,9 @@
             <button  routerLink="/exam/{{item.id}}" *ngIf="users?.adminRule == 'student'" mat-raised-button class="mx-1 btn btn-success" >ابدأ الاختبار</button>
            </div>
       </div>
-      <div class="col-md-6 col-sm-12" *ngIf="Subjects.length ==0">
+    <mat-spinner *ngIf="showspinner" class=" m-auto"></mat-spinner>
+
+      <div class="col-md-6 col-sm-12" *ngIf="Subjects.length ==0 && !showspinner">
            <div class="namesubject">
                <div>لا يوجد مواد</div>
            </div>

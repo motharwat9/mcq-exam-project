@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center align-items-center  " style="height:calc(100vh - 103px) ;">
-   <form [formGroup]="loginForm" (ngSubmit)="login()" class="  border p-4 col-lg-8 col-md-10 col-12 rounded-3 position-relative" dir="rtl">
-      <h4 style=" width: 40%; top:-20px ;height: 40px; translate: 50%;right: 50%;" class="d-flex justify-content-center align-items-center border rounded-2 position-absolute text-light bg-dark">login</h4>
+   <form [formGroup]="loginForm"  class="  border p-4 col-lg-8 col-md-10 col-12 rounded-3 position-relative" dir="rtl">
+      <h4 style=" width: 40%; top:-20px ;height: 40px; translate: 50%;right: 50%;" class="d-flex justify-content-center align-items-center border rounded-2 position-absolute text-light bg-dark">تسجيل الدخول</h4>
       <div class="mb-3 col-md-4 col-6 p-sm-1" (change)="detectChange($event)"  >
          <input type="radio"   [formControl]="loginForm.controls['type']" name="user" value="student" id="student" class="m-2">
          <label for="student" class="form-label">طالب</label>
@@ -8,11 +8,22 @@
          <label for="doctor"  class="form-label">دكتور</label>
       </div>
       <div class="row">
-         <div class="mb-3 col-md-6">
-            <input formControlName="email" type="email" name="email" id="" class="form-control" placeholder="الايميل">
+         <div class="mb-3 col-md-6 ">
+            <mat-form-field class=" w-100">
+               <mat-label>Enter your email</mat-label>
+               <input matInput placeholder="pat@example.com" formControlName="email" type="email" name="email">
+            </mat-form-field>
+            <!-- <input formControlName="email" type="email" name="email" id="" class="form-control" placeholder="الايميل"> -->
          </div>
          <div class="mb-3 col-md-6">
-            <input formControlName="password" type="password" name="pass" id="" class="form-control" placeholder="كلمه المرور" >
+            <mat-form-field class="w-100">
+               <mat-label>كلمة المرور</mat-label>
+               <input matInput [type]="hide ? 'password' : 'text'" name="pass" formControlName="password">
+               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+               </button>
+             </mat-form-field>
+            <!-- <input formControlName="password" type="password" name="pass" id="" class="form-control" placeholder="كلمه المرور" > -->
          </div>
       </div>
       <div class="row align-items-center justify-content-between">
@@ -20,7 +31,7 @@
             <a class="nav-item" routerLink="/register" routerLinkActive="active">انشاء حساب</a>
          </div>
          <div class="col-md-3 col-6   text-center">
-            <button type="submit"  class="btn text-light " style="background-color: black;">تسجيل دخول</button>
+            <button type="submit" (click)="login()"  class="btn text-light " style="background-color: black;">تسجيل دخول</button>
          </div>
       </div>
    </form>

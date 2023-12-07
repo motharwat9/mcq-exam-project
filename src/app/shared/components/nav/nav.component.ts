@@ -15,7 +15,7 @@ export class NavComponent implements OnInit {
     this.auth.userRule.subscribe((res:any)=>{
       if(res.adminRule){
         this.ruleIsUser=res
-        console.log(this.ruleIsUser) 
+        console.log(this.ruleIsUser)
       }
     })
   }

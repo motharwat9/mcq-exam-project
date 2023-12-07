@@ -21,7 +21,7 @@ export class AuthService {
       retry(2),
     )
   }
-  login(modelBody:Login):Observable<Login>{
+  login(modelBody:any):Observable<Login>{
     return this.http.put<Login>(`${environment.APIURL}/login/1`,modelBody).pipe(
       retry(2),
     )
@@ -31,6 +31,13 @@ export class AuthService {
       retry(2),
     )
   }
+  getUserById(id:any){
+    return this.http.get(`${environment.APIURL}/student/${id}`)
+  }
+  UpdateStudent(id:any,model:any){
+    return this.http.put(`${environment.APIURL}/student/${id}`,model)
+  }
+
   get userRule(){
     return this.UserRole
   }

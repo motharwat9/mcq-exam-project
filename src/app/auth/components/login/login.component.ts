@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
+
   loginForm;
   checkRadio:string='student'
   Users:Register[]=[]
@@ -23,6 +25,7 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllUser()
+    console.log(this.Users)
   }
   detectChange(event:any){
     this.checkRadio=event.target.value
@@ -41,10 +44,13 @@ export class LoginComponent implements OnInit {
       this.Toster.error("خطا فى كلمه المرور او الايميل ")
     }else{
       let model={
+        name:this.Users[index].name,
         email:this.loginForm.value.email,
-        adminRule:this.loginForm.value.type
-      } as Login
-
+        adminRule:this.loginForm.value.type,
+        userId:this.Users[index].id
+      } 
+      console.log(model)
+      console.log(this.Users)
       this.service.login(model).subscribe(res=>{
         this.Toster.success("تم تسجيل الدخول بنجاح")
         this.route.navigate(['/subjects'])

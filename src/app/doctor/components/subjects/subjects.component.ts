@@ -13,6 +13,7 @@ import { Route, Router } from '@angular/router';
 })
 export class SubjectsComponent implements OnInit {
   Subjects:Subject[]=[];
+  showspinner:boolean=true;
   users:Login | undefined=undefined;
   constructor(private serveice:DoctorService,private Auth:AuthService, private toaster:ToastrService,private router:Router){}
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class SubjectsComponent implements OnInit {
     }
   getAllSub(){
     this.serveice.getAllSubject().subscribe(res=>{
+      this.showspinner=false
       this.Subjects=res
     })
   }
